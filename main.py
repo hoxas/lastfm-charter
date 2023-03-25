@@ -18,6 +18,7 @@ def get_env(var: str) -> str:
 load_dotenv()
 LASTFM_API_KEY = get_env("LASTFM_API_KEY")
 LASTFM_USER = get_env("LASTFM_USER")
+EXPIRATION_TIME = get_env("EXPIRATION_TIME")
 ALBUM_COVER_SIZE = (300, 300)
 
 
@@ -234,7 +235,10 @@ async def get_chart(period: str, chart_shape: str):
     chart = Chart(user_top_albums, fetcher.chart_size).make_chart()
     response = Response(chart, status=200)
     response.headers.set("Content-Type", "image/jpeg")
-    response.headers.set("cache-control", "60")
+    response.headers.set("Age", "0")
+    response.headers.set(
+        "cache-control", f"public, max-age={EXPIRATION_TIME}, must-revalidate"
+    )
     return response
 
 
