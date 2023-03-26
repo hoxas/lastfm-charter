@@ -25,10 +25,14 @@
   - [Installing](#installing)
     - [.env example](#env-example)
 - [Deployment](#deployment)
+- [Usage](#usage)
+  - [API Paths](#api-paths)
+  - [Period options](#period-options)
+  - [Chart Shape options](#chart-shape-options)
+  - [Usage Examples](#usage-examples)
 - [Configuration Info](#configuration-info)
   - [Environment Variables](#environment-variables)
   - [Expiration time](#expiration-time)
-- [Usage](#usage)
 - [Built using](#built-using)
 - [Authors](#authors)
 - [Acknowledgements](#acknowledgements)
@@ -148,6 +152,47 @@ Finally just click deploy and wait till the deploy is complete.
 Test it by requesting a simple chart:\
 your-project-name.vercel.app/api/week/2x2
 
+## Usage
+
+The API needs to be setup with the proper environment variables in order to work, refer to [configuration info](#configuration-info) for further info.
+
+### API Paths
+
+The API has one path with one method:
+
+```
+/api/<period>/<chart_shape> - GET
+```
+
+### Period options
+
+```
+week - weekly chart
+month - monthly chart
+year - yearly chart
+overall - all-time chart
+```
+
+### Chart Shape options
+
+You can pass any shape in the format "numberxnumber" (x-axis by y-axis)\
+Examples:
+
+```
+10x10
+8x4
+16x1
+```
+
+### Usage Examples
+
+```
+/api/week/10x10
+/api/month/5x4
+/api/year/2x2
+/api/overall/7x5
+```
+
 ## Configuration Info
 
 All the environment variables are needed and must be passed to the vercel environment (deployment) or written in the .env file (locally)
@@ -177,10 +222,6 @@ Expiration time\* is in seconds. Examples:
 ```
 
 \* **It is important to note that the expiration time's sole purpose is for github to know when it should revalidate the image back with the API, this means that whenever you access the API directly through your URL the image will always be the most recent (recreated).<br><br>But since github internally caches the images it doesn't send a request everytime we reload the page, hence we need this variable.**
-
-## Usage
-
-Add notes about how to use the system.
 
 ## Built using
 
