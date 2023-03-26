@@ -1,3 +1,9 @@
+"""
+A simple lastfm chart generator.
+
+Made by @hoxas
+MIT License
+"""
 import os
 import re
 from io import BytesIO
