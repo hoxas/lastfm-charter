@@ -65,17 +65,16 @@ class Fetcher:
 
         period = period.lower()
 
-        match period:
-            case "week":
-                return "7day"
-            case "month":
-                return "1month"
-            case "year":
-                return "12month"
-            case "overall":
-                return "overall"
-            case _:
-                raise ValueError("Invalid chart period")
+        if period == "week":
+            return "7day"
+        elif period == "month":
+            return "1month"
+        elif period == "year":
+            return "12month"
+        elif period == "overall":
+            return "overall"
+        else:
+            raise ValueError("Invalid chart period")
 
     def _parse_chart_shape(self, chart_shape) -> tuple[int, int]:
         """
