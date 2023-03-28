@@ -43,7 +43,7 @@ LastFM personal charting API specifically made for use with github readmes image
 
 ### Why?
 
-I was trying to use other public alternatives of collage/chart generation but they didn't send the cache-control headers, so they wouldn't update on github readme and I had no way of setting a specific time for it to revalidate except for github actions sending "curl -X PURGE..." to the camo urls, and somehow still the image ended up breaking some hours after the PURGE request.
+I was trying to use other public alternatives for collage/chart generation but they didn't send the cache-control headers, so they wouldn't update on github readme and I had no way of setting a specific time for it to revalidate except for github actions sending "curl -X PURGE..." to the camo urls, and somehow still the image ended up breaking some hours after the PURGE request.
 
 So I made this configurable API where you can define how much time after image generation it will get stale requiring github to revalidate it.
 
