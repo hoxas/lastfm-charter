@@ -123,7 +123,7 @@ LASTFM_USER=random_user
 EXPIRATION_TIME=86400
 ```
 
-For further info on .env values refer to <a href="#configuration_info">configuration</a>.
+For further info on .env values refer to [configuration](#configuration-info).
 
 Run the api server
 
