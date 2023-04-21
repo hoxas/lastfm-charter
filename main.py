@@ -7,6 +7,7 @@ MIT License
 import os
 import re
 from io import BytesIO
+from urllib.error import HTTPError
 from quart import Quart, Response
 import lastfm
 from dotenv import load_dotenv
@@ -171,7 +172,7 @@ class Chart:
 
         try:
             album_cover = Image.open(BytesIO(urlopen(album["pic"]).read()))
-        except ValueError:
+        except (ValueError, HTTPError):
             album_cover = Image.new("RGB", ALBUM_COVER_SIZE, "black")
         return album_cover
 
