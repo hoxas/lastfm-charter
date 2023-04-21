@@ -55,9 +55,8 @@ The user is set through environment variables instead of through the request URL
 
 ### To Do
 
-- [ ] Implement transparent background behind album info text
+- [x] Implement transparent background behind album info text
 - [ ] Include a main api swagger page on "/" url for further documentation
-- [ ] Make another public API. Maybe?
 
 ## Getting Started
 
