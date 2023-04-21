@@ -188,9 +188,11 @@ class Chart:
             Image: album cover image with album info
         """
 
-        draw = ImageDraw.Draw(album_cover)
-        draw.text((0, 0), f"{album['artist']}", (255, 255, 255), self.font)
-        draw.text((0, 16), f"{album['album']}", (255, 255, 255), self.font)
+        text = f"{album['artist']}\n{album['album']}"
+        draw = ImageDraw.Draw(album_cover, "RGBA")
+        left, top, right, bottom = draw.textbbox((0, 0), text, self.font)
+        draw.rectangle((left - 5, top - 5, right + 5, bottom + 5), fill=(0, 0, 0, 128))
+        draw.text((0, 0), text, (255, 255, 255), self.font)
         return album_cover
 
     def make_chart(self) -> bytes:
